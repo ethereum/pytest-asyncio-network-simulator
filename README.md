@@ -1,27 +1,27 @@
-# pytest-asyncio-networking-simulator
+# pytest-asyncio-network-simulator
 
-[![Join the chat at https://gitter.im/ethereum/pytest-asyncio-networking-simulator](https://badges.gitter.im/ethereum/pytest-asyncio-networking-simulator.svg)](https://gitter.im/ethereum/pytest-asyncio-networking-simulator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://circleci.com/gh/ethereum/pytest-asyncio-networking-simulator.svg?style=shield)](https://circleci.com/gh/ethereum/pytest-asyncio-networking-simulator)
-[![PyPI version](https://badge.fury.io/py/pytest-asyncio-networking-simulator.svg)](https://badge.fury.io/py/pytest-asyncio-networking-simulator)
-[![Python versions](https://img.shields.io/pypi/pyversions/pytest-asyncio-networking-simulator.svg)](https://pypi.python.org/pypi/pytest-asyncio-networking-simulator)
-[![Docs build](https://readthedocs.org/projects/pytest-asyncio-networking-simulator/badge/?version=latest)](http://pytest-asyncio-networking-simulator.readthedocs.io/en/latest/?badge=latest)
+[![Join the chat at https://gitter.im/ethereum/pytest-asyncio-network-simulator](https://badges.gitter.im/ethereum/pytest-asyncio-network-simulator.svg)](https://gitter.im/ethereum/pytest-asyncio-network-simulator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://circleci.com/gh/ethereum/pytest-asyncio-network-simulator.svg?style=shield)](https://circleci.com/gh/ethereum/pytest-asyncio-network-simulator)
+[![PyPI version](https://badge.fury.io/py/pytest-asyncio-network-simulator.svg)](https://badge.fury.io/py/pytest-asyncio-network-simulator)
+[![Python versions](https://img.shields.io/pypi/pyversions/pytest-asyncio-network-simulator.svg)](https://pypi.python.org/pypi/pytest-asyncio-network-simulator)
+[![Docs build](https://readthedocs.org/projects/pytest-asyncio-network-simulator/badge/?version=latest)](http://pytest-asyncio-network-simulator.readthedocs.io/en/latest/?badge=latest)
    
 
-A plugin for `pytest` which simulates the networking in various `asyncio` APIs
+A plugin for `pytest` which simulates the network in various `asyncio` APIs
 such that rather than opening and communicating over sockets, communcation
 happens directly in memory.
 
-Read more in the [documentation on ReadTheDocs](https://pytest-asyncio-networking-simulator.readthedocs.io/). [View the change log](https://pytest-asyncio-networking-simulator.readthedocs.io/en/latest/releases.html).
+Read more in the [documentation on ReadTheDocs](https://pytest-asyncio-network-simulator.readthedocs.io/). [View the change log](https://pytest-asyncio-network-simulator.readthedocs.io/en/latest/releases.html).
 
 ## Quickstart
 
 ```sh
-pip install pytest-asyncio-networking-simulator
+pip install pytest-asyncio-network-simulator
 ```
 
 ## Developer Setup
 
-If you would like to hack on `pytest-asyncio-networking-simulator`, please check out the
+If you would like to hack on `pytest-asyncio-network-simulator`, please check out the
 [Ethereum Development Tactical Manual](https://github.com/pipermerriam/ethereum-dev-tactical-manual)
 for information on how we do:
 
@@ -35,8 +35,8 @@ for information on how we do:
 You can set up your dev environment with:
 
 ```sh
-git clone git@github.com:ethereum/pytest-asyncio-networking-simulator.git
-cd pytest-asyncio-networking-simulator
+git clone git@github.com:ethereum/pytest-asyncio-network-simulator.git
+cd pytest-asyncio-network-simulator
 virtualenv -p python3 venv
 . venv/bin/activate
 pip install -e .[dev]
@@ -66,7 +66,7 @@ Run in one thread, with color and desktop notifications:
 
 ```sh
 cd venv
-ptw --onfail "notify-send -t 5000 'Test failure ⚠⚠⚠⚠⚠' 'python 3 test on pytest-asyncio-networking-simulator failed'" ../tests ../asyncio_network_simulator
+ptw --onfail "notify-send -t 5000 'Test failure ⚠⚠⚠⚠⚠' 'python 3 test on pytest-asyncio-network-simulator failed'" ../tests ../asyncio_network_simulator
 ```
 
 ### Release setup

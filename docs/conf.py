@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# pytest-asyncio-networking-simulator documentation build configuration file, created by
+# pytest-asyncio-network-simulator documentation build configuration file, created by
 # sphinx-quickstart on Thu Oct 16 20:43:24 2014.
 #
 # This file is execfile()d with the current directory set to its
@@ -53,7 +53,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'pytest-asyncio-networking-simulator'
+project = 'pytest-asyncio-network-simulator'
 copyright = '2018, Ethereum Foundation'
 
 __version__ = setup_version
@@ -209,7 +209,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'asyncio_network_simulator.tex', 'pytest-asyncio-networking-simulator Documentation',
+  ('index', 'asyncio_network_simulator.tex', 'pytest-asyncio-network-simulator Documentation',
    'Ethereum Foundation', 'manual'),
 ]
 
@@ -239,7 +239,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'asyncio_network_simulator', 'pytest-asyncio-networking-simulator Documentation',
+    ('index', 'asyncio_network_simulator', 'pytest-asyncio-network-simulator Documentation',
      ['Ethereum Foundation'], 1)
 ]
 
@@ -253,8 +253,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'pytest-asyncio-networking-simulator', 'pytest-asyncio-networking-simulator Documentation',
-   'Ethereum Foundation', 'pytest-asyncio-networking-simulator', 'plugin for pytest which facilitates simulation of networking for asyncio applications',
+  ('index', 'pytest-asyncio-network-simulator', 'pytest-asyncio-network-simulator Documentation',
+   'Ethereum Foundation', 'pytest-asyncio-network-simulator', 'plugin for pytest which facilitates simulation of network for asyncio applications',
    'Miscellaneous'),
 ]
 

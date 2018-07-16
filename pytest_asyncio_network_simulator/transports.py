@@ -1,4 +1,5 @@
 import asyncio
+from typing import Iterable
 
 from .address import Address
 

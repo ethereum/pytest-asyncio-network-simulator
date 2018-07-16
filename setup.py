@@ -47,6 +47,7 @@ setup(
     url='https://github.com/ethereum/pytest-asyncio-network-simulator',
     include_package_data=True,
     install_requires=[
+        "asyncio-cancel-token==0.1.0a2",
         "pytest>=3.3.2,<4",
     ],
     setup_requires=['setuptools-markdown'],

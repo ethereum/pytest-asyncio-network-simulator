@@ -66,5 +66,5 @@ workflows:
     jobs:
       - doctest
       - lint
-      - py35
       - py36
+      - py37

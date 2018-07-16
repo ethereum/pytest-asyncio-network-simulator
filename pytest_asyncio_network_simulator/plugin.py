@@ -1,7 +1,10 @@
 import asyncio
+
 import pytest
 
-from .router import Router
+from .router import (
+    Router,
+)
 
 
 @pytest.fixture

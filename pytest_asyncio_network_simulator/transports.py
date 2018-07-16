@@ -1,7 +1,11 @@
 import asyncio
-from typing import Iterable
+from typing import (
+    Iterable,
+)
 
-from .address import Address
+from .address import (
+    Address,
+)
 
 
 class MemoryTransport(asyncio.Transport):

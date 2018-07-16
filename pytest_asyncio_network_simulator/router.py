@@ -1,8 +1,8 @@
 import asyncio
 import logging
 from typing import (
-    Dict,
     TYPE_CHECKING,
+    Dict,
 )
 
 from cancel_token import (
@@ -10,13 +10,16 @@ from cancel_token import (
     OperationCancelled,
 )
 
-from .address import Address
+from .address import (
+    Address,
+)
 from .streams import (
     addressed_pipe,
     direct_pipe,
 )
-from .utils import ReaderWriterPair
-
+from .utils import (
+    ReaderWriterPair,
+)
 
 if TYPE_CHECKING:
     from .network import Network  # noqa: F401

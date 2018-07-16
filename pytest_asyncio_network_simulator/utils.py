@@ -5,6 +5,5 @@ from typing import (
     Tuple,
 )
 
-
 ConnectionCallback = Callable[[asyncio.StreamReader, asyncio.StreamWriter], Any]
 ReaderWriterPair = Tuple[asyncio.StreamReader, asyncio.StreamWriter]

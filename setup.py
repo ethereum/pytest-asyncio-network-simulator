@@ -64,9 +64,8 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: Implementation :: PyPy',
+        'Programming Language :: Python :: 3.7',
     ],
     entry_points={
         'pytest11': ['pytest-asyncio-network-simulator=pytest_asyncio_network_simulator.plugin'],

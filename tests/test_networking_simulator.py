@@ -1,4 +1,5 @@
 import asyncio
+
 import pytest
 
 from pytest_asyncio_network_simulator import (

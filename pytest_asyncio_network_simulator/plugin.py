@@ -1,14 +1,21 @@
 import asyncio
+from typing import (
+    Any,
+    AsyncGenerator,
+)
 
 import pytest
 
+from .network import (
+    Network,
+)
 from .router import (
     Router,
 )
 
 
 @pytest.fixture
-async def router():
+async def router() -> AsyncGenerator[Router, None]:
     router = Router()
     try:
         asyncio.ensure_future(router.run())
@@ -18,7 +25,7 @@ async def router():
 
 
 @pytest.fixture
-def network(router, monkeypatch):
+def network(router: Router, monkeypatch: Any) -> Network:
     network = router.get_network('localhost')
     # TODO: this should be configurable.
     network.default_host = '127.0.0.1'

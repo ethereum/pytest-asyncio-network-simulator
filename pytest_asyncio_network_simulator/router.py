@@ -3,6 +3,7 @@ import logging
 from typing import (
     TYPE_CHECKING,
     Dict,
+    cast,
 )
 
 from cancel_token import (
@@ -17,6 +18,9 @@ from .streams import (
     addressed_pipe,
     direct_pipe,
 )
+from .transports import (
+    AddressedTransport,
+)
 from .utils import (
     ReaderWriterPair,
 )
@@ -29,7 +33,7 @@ if TYPE_CHECKING:
 async def _connect_streams(
         reader: asyncio.StreamReader,
         writer: asyncio.StreamWriter,
-        queue: asyncio.Queue,
+        queue: asyncio.Queue[int],
         token: CancelToken) -> None:
     try:
         while not token.triggered:
@@ -55,16 +59,12 @@ async def _connect_streams(
 
 
 class Router:
-    hosts: Dict[str, 'Host']
-    networks = Dict[str, 'Network']
-    connections = Dict[CancelToken, asyncio.Task]
-
     logger: logging.Logger = logging.getLogger('pytest_asyncio_network_simulator.router.Router')
 
-    def __init__(self):
-        self.hosts = {}
-        self.networks = {}
-        self.connections = {}
+    def __init__(self) -> None:
+        self.hosts: Dict[str, 'Host'] = {}
+        self.networks: Dict[str, 'Network'] = {}
+        self.connections: Dict[CancelToken, asyncio.Future[None]] = {}
 
         self.cancel_token = CancelToken('Router')
 
@@ -92,7 +92,10 @@ class Router:
 
         token = CancelToken(str(address)).chain(self.cancel_token)
         connection = asyncio.ensure_future(_connect_streams(
-            internal_reader, internal_writer, external_writer.transport.queue, token,
+            internal_reader,
+            internal_writer,
+            cast(AddressedTransport, external_writer.transport).queue,
+            token,
         ))
         self.connections[token] = connection
 

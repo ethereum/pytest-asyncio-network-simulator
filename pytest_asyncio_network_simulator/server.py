@@ -32,7 +32,7 @@ class Server(asyncio.AbstractServer):
         for writer in self.connections:
             writer.write_eof()
 
-    async def wait_closed(self) -> None:
+    async def wait_closed(self) -> None:  # type: ignore
         await asyncio.wait(
             tuple(writer.drain() for writer in self.connections),
             timeout=0.01,

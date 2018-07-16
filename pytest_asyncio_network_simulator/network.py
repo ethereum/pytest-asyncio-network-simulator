@@ -17,7 +17,7 @@ class Network:
     name: str
     _default_host: str = None
 
-    def __init__(self, name: str, router: Router, default_host: str=None):
+    def __init__(self, name: str, router: Router, default_host: str=None) -> None:
         self.name = name
         self.router = router
         self.default_host = default_host
@@ -41,8 +41,8 @@ class Network:
             client_connected_cb: ConnectionCallback,
             host: str,
             port: int) -> Server:
-        host = self.router.get_host(host)
-        return await host.start_server(client_connected_cb, port)
+        _host = self.router.get_host(host)
+        return await _host.start_server(client_connected_cb, port)
 
     async def open_connection(
             self,

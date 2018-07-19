@@ -33,7 +33,7 @@ if TYPE_CHECKING:
 async def _connect_streams(
         reader: asyncio.StreamReader,
         writer: asyncio.StreamWriter,
-        queue: asyncio.Queue[int],
+        queue: "asyncio.Queue[int]",
         token: CancelToken) -> None:
     try:
         while not token.triggered:

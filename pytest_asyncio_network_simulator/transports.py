@@ -44,7 +44,7 @@ class AddressedTransport(MemoryTransport):
     """
     Direct connection between a StreamWriter and StreamReader.
     """
-    _queue: asyncio.Queue[int]
+    _queue: "asyncio.Queue[int]"
 
     def __init__(self, address: Address, reader: asyncio.StreamReader) -> None:
         super().__init__(reader)
@@ -52,7 +52,7 @@ class AddressedTransport(MemoryTransport):
         self._queue = asyncio.Queue()
 
     @property
-    def queue(self) -> asyncio.Queue[int]:
+    def queue(self) -> "asyncio.Queue[int]":
         return self._queue
 
     def get_extra_info(self, name: str, default: Any=None) -> Any:

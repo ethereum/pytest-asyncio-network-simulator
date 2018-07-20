@@ -1,1 +1,1 @@
-pytest-asyncio-networking-simulator[doc]
+pytest-asyncio-network-simulator[doc]

@@ -1,7 +1,10 @@
 import asyncio
+
 import pytest
 
-from p2p.tools.local_network import Address
+from pytest_asyncio_network_simulator import (
+    Address,
+)
 
 
 @pytest.mark.asyncio

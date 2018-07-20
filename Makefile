@@ -27,7 +27,7 @@ lint:
 	tox -elint
 
 lint-roll:
-	isort --recursive pytest_asyncio_networking_simulator tests
+	isort --recursive pytest_asyncio_network_simulator tests
 	$(MAKE) lint
 
 test:

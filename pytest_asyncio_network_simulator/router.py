@@ -2,7 +2,6 @@ import asyncio
 import logging
 from typing import (
     TYPE_CHECKING,
-    Dict,
     cast,
 )
 
@@ -26,6 +25,7 @@ from .utils import (
 )
 
 if TYPE_CHECKING:
+    from typing import Dict  # noqa: F401
     from .network import Network  # noqa: F401
     from .host import Host  # noqa: F401
 

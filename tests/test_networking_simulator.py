@@ -7,6 +7,13 @@ from pytest_asyncio_network_simulator import (
 )
 
 
+@pytest.fixture
+def network(router):
+    network = router.get_network('localhost')
+    with network.patch_asyncio():
+        yield network
+
+
 @pytest.mark.asyncio
 async def test_router_produces_connected_readers(router):
     address = Address('192.168.1.1', 1234)

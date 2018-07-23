@@ -1,4 +1,10 @@
+import asyncio
 import os
+from typing import (  # noqa: F401
+    Any,
+    Dict,
+    Tuple,
+)
 
 from .router import (
     Router,
@@ -10,6 +16,34 @@ from .utils import (
     ConnectionCallback,
     ReaderWriterPair,
 )
+
+
+class _AsyncioMonkeypatcher:
+    def __init__(self,
+                 network: 'Network',
+                 paths_to_patch: Tuple[str, ...]) -> None:
+        self.original_values: Dict[str, Any] = {}
+        self.paths_to_patch = paths_to_patch
+        self.network = network
+
+    def patch(self) -> None:
+        for path in self.paths_to_patch:
+            self.original_values[path] = getattr(asyncio, path)
+            monkey_value = getattr(self.network, path)
+            setattr(asyncio, path, monkey_value)
+
+    def unpatch(self) -> None:
+        for path in self.paths_to_patch:
+            setattr(asyncio, path, self.original_values[path])
+
+    def __enter__(self) -> None:
+        pass
+
+    def __exit__(self, exc_type, exc_val, exc_tb):  # type: ignore
+        self.unpatch()
+
+
+DEFAULT_PATHS = ('start_server', 'open_connection')
 
 
 class Network:
@@ -60,3 +94,29 @@ class Network:
             except ConnectionRefusedError:
                 pass
             raise err
+
+    #
+    # Monkeypatch API
+    #
+    _patcher = None
+
+    def patch_asyncio(
+            self,
+            paths_to_patch: Tuple[str, ...] = None) -> _AsyncioMonkeypatcher:
+        if self._patcher is None:
+            if paths_to_patch is None:
+                paths_to_patch = DEFAULT_PATHS
+
+            self._patcher = _AsyncioMonkeypatcher(self, paths_to_patch)
+            self._patcher.patch()
+        return self._patcher
+
+    def unpatch_asynio(
+            self,
+            paths_to_unpatch: Tuple[str, ...] = None) -> None:
+        if self._patcher is None:
+            raise RuntimeError(
+                'The `asyncio` library does not appear to be patched.'
+            )
+        self._patcher.unpatch()
+        self._patcher = None

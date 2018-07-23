@@ -1,7 +1,8 @@
 import asyncio
 import os
-
-from typing import (
+from typing import (  # noqa: F401
+    Any,
+    Dict,
     Tuple,
 )
 
@@ -21,24 +22,24 @@ class _AsyncioMonkeypatcher:
     def __init__(self,
                  network: 'Network',
                  paths_to_patch: Tuple[str, ...]) -> None:
-        self.original_values = {}
+        self.original_values: Dict[str, Any] = {}
         self.paths_to_patch = paths_to_patch
         self.network = network
 
-    def patch(self):
+    def patch(self) -> None:
         for path in self.paths_to_patch:
             self.original_values[path] = getattr(asyncio, path)
             monkey_value = getattr(self.network, path)
             setattr(asyncio, path, monkey_value)
 
-    def unpatch(self):
+    def unpatch(self) -> None:
         for path in self.paths_to_patch:
             setattr(asyncio, path, self.original_values[path])
 
-    def __enter__(self):
+    def __enter__(self) -> None:
         pass
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(self, exc_type, exc_val, exc_tb):  # type: ignore
         self.unpatch()
 
 

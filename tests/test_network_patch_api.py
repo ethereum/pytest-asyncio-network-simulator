@@ -1,7 +1,10 @@
 import asyncio
+
 import pytest
 
-from pytest_asyncio_network_simulator.network import Network
+from pytest_asyncio_network_simulator.network import (
+    Network,
+)
 
 
 class sentinal_a:

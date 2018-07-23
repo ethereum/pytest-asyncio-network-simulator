@@ -102,19 +102,20 @@ class Network:
     def patch_asyncio(
             self,
             paths_to_patch: Tuple[str, ...] = None) -> _AsyncioMonkeypatcher:
-        if self._patcher is not None:
-            raise Exception('TODO: Already patched')
+        if self._patcher is None:
+            if paths_to_patch is None:
+                paths_to_patch = DEFAULT_PATHS
 
-        if paths_to_patch is None:
-            paths_to_patch = DEFAULT_PATHS
-
-        self._patcher = _AsyncioMonkeypatcher(self, paths_to_patch)
-        self._patcher.patch()
+            self._patcher = _AsyncioMonkeypatcher(self, paths_to_patch)
+            self._patcher.patch()
         return self._patcher
 
     def unpatch_asynio(
             self,
             paths_to_unpatch: Tuple[str, ...] = None) -> None:
         if self._patcher is None:
-            raise Exception('TODO: Not currently patched')
+            raise RuntimeError(
+                'The `asyncio` library does not appear to be patched.'
+            )
         self._patcher.unpatch()
+        self._patcher = None

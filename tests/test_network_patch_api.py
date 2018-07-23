@@ -46,3 +46,38 @@ def test_network_patch_asyncio_context_manager_api_with_error():
 
     assert asyncio.start_server == sentinal_a
     assert asyncio.open_connection == sentinal_b
+
+
+def test_explicit_patching():
+    network = Network('test', None, 'localhost')
+
+    assert asyncio.start_server == sentinal_a
+    assert asyncio.open_connection == sentinal_b
+
+    network.patch_asyncio()
+
+    assert asyncio.start_server == network.start_server
+    assert asyncio.open_connection == network.open_connection
+
+    # assert we can idempotently call this multiple times
+    network.patch_asyncio()
+
+    assert asyncio.start_server == network.start_server
+    assert asyncio.open_connection == network.open_connection
+
+    network.unpatch_asynio()
+
+    assert asyncio.start_server == sentinal_a
+    assert asyncio.open_connection == sentinal_b
+
+    with pytest.raises(RuntimeError):
+        # should raise now that it has been unpatched.
+        network.unpatch_asynio()
+
+
+def test_cannot_unpatch_if_never_patched():
+    network = Network('test', None, 'localhost')
+
+    with pytest.raises(RuntimeError):
+        # should raise now that it has been unpatched.
+        network.unpatch_asynio()

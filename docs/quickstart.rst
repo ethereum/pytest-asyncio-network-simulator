@@ -15,7 +15,9 @@ Install with ``pip``
 Patching ``asyncio``
 --------------------
 
-A pytest fixture is the easiest.  Place the following either in a specific test module, or in a ``conftest.py`` file.
+A pytest fixture is the easiest and quickest way to leverage this library.
+Place the following either in a specific test module, or in a ``conftest.py``
+file.
 
 .. code-block:: bash
 
@@ -32,6 +34,12 @@ This will replace the following ``asyncio`` APIs with the patched versions.
 
 * ``asyncio.open_connection``
 * ``asyncio.start_server``
+
+
+.. note::
+
+    The `router` fixture used in the example above is provided by this library
+    by default.
 
 .. note:: 
 

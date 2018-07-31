@@ -40,7 +40,7 @@ extras_require['dev'] = (
 setup(
     name='pytest-asyncio-network-simulator',
     # *IMPORTANT*: Don't manually change the version here. Use `make bump`, as described in readme
-    version='0.1.0-alpha.1',
+    version='0.1.0-alpha.2',
     description="""pytest-asyncio-network-simulator: Plugin for pytest for simulator the network in tests""",
     long_description_markdown_filename='README.md',
     author='Ethereum Foundation',

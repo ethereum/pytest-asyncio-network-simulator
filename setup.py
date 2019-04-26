@@ -49,9 +49,7 @@ setup(
     include_package_data=True,
     install_requires=[
         "asyncio-cancel-token==0.1.0a2",
-        # pytest 3.7.0 broke async fixtures.
-        # https://github.com/pytest-dev/pytest-asyncio/issues/89
-        "pytest>=3.3.2,<3.7.0",
+        "pytest>=3.3.2,<5",
         "pytest-asyncio>=0.8.0,<1",
     ],
     setup_requires=['setuptools-markdown'],

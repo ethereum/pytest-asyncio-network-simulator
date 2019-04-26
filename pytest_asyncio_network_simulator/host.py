@@ -20,8 +20,8 @@ from .utils import (
 
 
 class Host:
-    servers: Dict[int, Server] = None
-    connections: Dict[int, Address] = None
+    servers: Dict[int, Server]
+    connections: Dict[int, Address]
 
     def __init__(self, host: str, router: Router) -> None:
         self.router = router

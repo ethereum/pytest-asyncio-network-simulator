@@ -49,7 +49,7 @@ DEFAULT_PATHS = ('start_server', 'open_connection')
 class Network:
     router: Router
     name: str
-    _default_host: str = None
+    _default_host: str
 
     def __init__(self, name: str, router: Router, default_host: str=None) -> None:
         self.name = name
